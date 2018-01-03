@@ -16,7 +16,11 @@ def validate(tid):
     flag = 1
     lst = []
     while(tid!=""):
-        cur = db.transactions.find({"transaction_id": tid})[0]
+        try:
+            cur = db.transactions.find({"transaction_id": tid})[0]
+        except IndexError:
+            flag = 0
+            break
         last = cur['previous_transaction']
         #print "tid : ", tid
         #print "last : ", last
