@@ -22,7 +22,7 @@ def api_transaction():
 
 @app.route("/validate")
 def api_validate():
-    return validate("3b7011da3be422a3afc91d31cb824281b051c3e7fa924a871722f04f6d134965")
+    return validate("ef3caaf46de676382267b9ab7fe04ada43cd490907a682ae909f053b75bab5a7")
 
 if __name__ == '__main__':
     app.run(debug = True)
