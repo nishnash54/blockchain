@@ -5,11 +5,11 @@ from hash_gen import hash
 
 client = MongoClient()
 client = MongoClient(var.link, 27017)
-db = client['blockchain']
+db = client['subconn']
 
 def update(data, hash, tid):
     data = loads(data)
-    db.transactions.insert({"from_id": data['from_id'], "to_id": data['to_id'],\
+    db.blockchain.insert({"from_id": data['from_id'], "to_id": data['to_id'],\
         "last_item_transaction": data['transaction_id'], "transaction_id": hash, "previous_transaction": tid})
 
 def validate(tid):
@@ -17,7 +17,7 @@ def validate(tid):
     lst = []
     while(tid!=""):
         try:
-            cur = db.transactions.find({"transaction_id": tid})[0]
+            cur = db.blockchain.find({"transaction_id": tid})[0]
         except IndexError:
             flag = 0
             break
