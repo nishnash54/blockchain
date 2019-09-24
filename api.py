@@ -2,8 +2,10 @@ from flask import Flask, request
 from hash_gen import hash
 from database import update, validate
 from json import dumps
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 last_transaction = ""
 
 @app.route("/")
@@ -26,7 +28,7 @@ def api_transaction():
 
 @app.route("/validate")
 def api_validate():
-    return validate("6a878b780f041f60c289de001c8a6ae2acee641b3fbf6fe004958cf8aa2e9745")
+    return validate(request.args['hash'])
 
 if __name__ == '__main__':
     app.run(debug = True)
