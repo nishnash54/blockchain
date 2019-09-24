@@ -4,13 +4,16 @@ from json import dumps, loads
 from hash_gen import hash
 
 client = MongoClient()
-client = MongoClient(var.link, 27017)
-db = client['subconn']
+client = MongoClient("mongodb://admin:Admin1#@ds341247.mlab.com:41247/medical_records", 27017)
+db = client['medical_records']
 
 def update(data, hash, tid):
     data = loads(data)
-    db.blockchain.insert({"from_id": data['from_id'], "to_id": data['to_id'],\
-        "last_item_transaction": data['transaction_id'], "transaction_id": hash, "previous_transaction": tid})
+    db.blockchain.insert({"patient_id": data['patient_id'],
+    "medical_record_id": data['medical_record_id'],\
+        "insurance_id": data['insurance_id'],
+         "transaction_id": hash, "previous_transaction": tid}
+         )
 
 def validate(tid):
     flag = 1
@@ -25,8 +28,8 @@ def validate(tid):
         #print "tid : ", tid
         #print "last : ", last
         #print "cur : ", cur['transaction_id']
-        data = dumps({"from_id": cur['from_id'], "to_id": cur['to_id'],\
-            "transaction_id": cur['last_item_transaction'], "last_transaction": cur['previous_transaction']})
+        data = dumps({"patient_id": cur['patient_id'], "medical_record_id": cur['medical_record_id'],\
+            "insurance_id": cur['insurance_id'], "last_transaction": cur['previous_transaction']})
         val = hash(data)
         if val!=tid:
             flag = 0
