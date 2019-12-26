@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Medical Records Validation</title>
+	<script type="text/javascript" src="validate.js"></script>
+	<style type="text/css">
+		body {
+			background-color: rgb(2,8,11);
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		#heading {
+			color: rgb(231,232,229);
+			font-weight: bold;
+			margin-top: 120px;
+			text-align: center;
+		}
+
+		#Complete {
+			color: orange;
+			text-align: center;
+			margin-top: 80px;
+			margin-bottom: 40px;
+		}
+
+		.invalid {
+			color: #D8000C;
+			background-color: #FFBABA;
+			margin: 0 auto;
+			width: 25%;
+			text-align: center;
+			padding: 20px 0 20px 0;
+			font-weight: bold;
+			font-size: 30px;
+
+		}
+
+		.valid {
+			color: #4F8A10;;
+			background-color: #DFF2BF;;
+			margin: 0 auto;
+			width: 25%;
+			text-align: center;
+			padding: 20px 0 20px 0;
+			font-weight: bold;
+			font-size: 30px;
+
+		}
+
+		#button {
+
+			width: 120px;
+			height: 35px;
+			margin:50px 0;
+			margin-left: 45%;
+			margin-bottom: 50px;
+
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<h1 id="heading">Electronic Medical Records and Insaurance</h1>
+	<center ><span style = "color: white">ENTER THE HASH VALUE</span>
+	<input type="text" id="hash"></center> 
+	<button onclick="myFunction()" id="button">Check Result</button>
+	<div id="result">
+		INVALID
+	</div>
+
+</body>
+</html>
+
+
+
+
